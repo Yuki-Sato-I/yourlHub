@@ -1,0 +1,34 @@
+version: '3'
+services:
+  web:
+    image: node:18.18-alpine
+    volumes:
+      - ./yourlhub-front:/front
+    working_dir: /front
+    ports:
+      - "3000:3000"
+    command: sh -c "npm run dev || sh"
+    tty: true
+  api:
+    image: maven:3.9.4-amazoncorretto-21-al2023
+    volumes:
+      - ./yourlhub-api:/api
+    working_dir: /api
+    ports:
+      - "8080:8080"
+    command: mvn spring-boot:run
+    depends_on:
+      - db
+  db:
+    image: postgres:16.0-alpine3.17
+    volumes:
+      - data:/var/lib/postgresql/data
+      - ./yourlhub-api/db/sql/postgres/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+volumes:
+  data:
+    driver: local

@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/yourlhub
+    username: yourlhub
+    password: yourlhub
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 15000
+      maximum-pool-size: 50
+      idle-timeout: 60000
+      maxLifetime: 580000
+      connection-test-query: SELECT 1
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
