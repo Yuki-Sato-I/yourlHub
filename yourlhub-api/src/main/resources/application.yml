@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/yourlhub
-    username: yourlhub
-    password: yourlhub
+    url: jdbc:postgresql://localhost:5432/yourlhub # FIXME 環境変数で制御する
+    username: yourlhub # FIXME 環境変数で制御する
+    password: yourlhub # FIXME 環境変数で制御する
     driver-class-name: org.postgresql.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
@@ -11,6 +11,28 @@ spring:
       idle-timeout: 60000
       maxLifetime: 580000
       connection-test-query: SELECT 1
+  graphql:
+    graphiql:
+      enabled: true # FIXME 環境変数で制御する
+  jackson:
+    time-zone: Asia/Tokyo
+    serialization:
+      indent-output: true
+server:
+  port: 8080
+  tomcat:
+    basedir: .
+    accesslog:
+      enabled: true
+      directory: access_log
+      suffix: .log
+      prefix: access_log
+      file-date-format: .yyyy-MM-dd
+logging:
+  level:
+    root: info
+  file:
+    name: spring.log
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
