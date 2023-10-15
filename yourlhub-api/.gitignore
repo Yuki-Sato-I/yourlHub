@@ -32,6 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 
-### その他 ###
+### Others ###
 spring.log*
 access_log

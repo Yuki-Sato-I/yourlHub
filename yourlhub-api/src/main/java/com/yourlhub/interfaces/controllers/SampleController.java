@@ -11,6 +11,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -33,7 +34,7 @@ public class SampleController {
                 .getByIds(ids)
                 .stream()
                 .collect(Collectors.toMap(SampleAuthor::id, Function.identity()));
-        System.out.println(authors);
-        return Flux.fromStream(ids.stream().map(authors::get));
+
+        return Flux.fromStream(ids.stream().map(id -> Objects.requireNonNullElse(authors.get(id), null)));
     }
 }
