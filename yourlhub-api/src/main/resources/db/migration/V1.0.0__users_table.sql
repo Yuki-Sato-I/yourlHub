@@ -4,7 +4,7 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   middle_name VARCHAR(255),
   last_name VARCHAR(255) NOT NULL,
-  token TEXT NOT NULL,
+  nick_name VARCHAR(255) NOT NULL,
   password_digest TEXT NOT NULL,
   activated_at TIMESTAMP,
   activated BOOLEAN NOT NULL,

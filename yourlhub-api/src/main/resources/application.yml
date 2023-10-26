@@ -31,8 +31,16 @@ server:
 logging:
   level:
     root: info
+    com:
+      yourlhub:
+        interfaces:
+          database: DEBUG
   file:
     name: spring.log
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+app:
+  jwt:
+    secret: yourlHubjwt1998samplejwtsecretthisisapenyyyyy # FIXME 環境変数で制御する
+    issuer: yourlHub # FIXME 環境変数で制御する

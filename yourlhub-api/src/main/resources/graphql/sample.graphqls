@@ -1,4 +1,4 @@
-type Query {
+extend type Query {
     bookById(id: ID): SampleBook
     books: [SampleBook]
 }
