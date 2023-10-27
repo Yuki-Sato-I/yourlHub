@@ -5,18 +5,40 @@ import com.yourlhub.interfaces.database.provider.UserSqlProvider;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.SelectProvider;
-import reactor.core.publisher.Mono;
 
 @Mapper
 public interface UserRepository {
 
-    @SelectProvider(UserSqlProvider.class)
-    User findById(final String id);
+  @SelectProvider(UserSqlProvider.class)
+  User findById(final String id);
 
-    @SelectProvider(UserSqlProvider.class)
-    User findByEmail(final String email);
+  @SelectProvider(UserSqlProvider.class)
+  User findByEmail(final String email);
 
-    @Insert("INSERT INTO users(id, email, first_name, last_name, nick_name, password_digest, activated, status, created_at, updated_at) " +
-            "VALUES(CAST(#{id} AS UUID), #{email}, #{first_name}, #{last_name}, #{nick_name}, #{passwordDigest}, #{activated}, #{status}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)")
-    Boolean create(User user);
+  @Insert(
+      "INSERT INTO users("
+          + "id, "
+          + "email, "
+          + "first_name, "
+          + "last_name, "
+          + "nick_name, "
+          + "password_digest, "
+          + "activated, "
+          + "status, "
+          + "created_at, "
+          + "updated_at"
+          + ") "
+          + "VALUES("
+          + "CAST(#{id} AS UUID), "
+          + "#{email}, "
+          + "#{first_name}, "
+          + "#{last_name}, "
+          + "#{nick_name}, "
+          + "#{passwordDigest}, "
+          + "#{activated}, "
+          + "#{status}, "
+          + "CURRENT_TIMESTAMP, "
+          + "CURRENT_TIMESTAMP"
+          + ")")
+  Boolean create(User user);
 }
