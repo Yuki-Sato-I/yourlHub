@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
       throw ApplicationErrors.userNotFound(user.getEmail());
     }
 
-    return Mono.just(jwtTokenUtil.generateToken(user));
+    return Mono.just(jwtTokenUtil.generateToken(user.getId()));
   }
 
   /**
@@ -65,6 +65,6 @@ public class UserServiceImpl implements UserService {
   public Mono<String> create(final User user) {
     userRepository.create(user);
 
-    return Mono.just(jwtTokenUtil.generateToken(user));
+    return Mono.just(jwtTokenUtil.generateToken(user.getId()));
   }
 }

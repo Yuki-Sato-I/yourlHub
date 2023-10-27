@@ -1,0 +1,25 @@
+#!/bin/sh
+
+  echo "\033[31;22mINFO"
+  echo "=============================================================="
+  echo "現在commit messageのチェックを行なっていません。"
+  echo ""
+  echo ".githooks/commit-msg"
+  echo "================================================================\033[0m\n"
+
+# issue番号の存在チェック
+# readonly COMMIT_MSG_FILE="$(cat "$1")"
+# readonly ISSUE_NO="\AB#[0-9]+\s+.*"
+
+# echo " - issue番号の存在チェック: "
+# echo "$COMMIT_MSG_FILE"
+
+# if ! echo "$COMMIT_MSG_FILE" | grep -Eq "${ISSUE_NO}"; then
+#   echo "\033[31;22mNG"
+#   echo "=============================================================="
+#   echo "コミットメッセージの先頭にAB#issue番号が含まれていません"
+#   echo ""
+#   echo "Example: AB#1234 (メッセージ)"
+#   echo "================================================================\033[0m\n"
+#   exit 1
+# fi

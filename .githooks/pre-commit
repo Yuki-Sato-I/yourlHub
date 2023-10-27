@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Start Java Fomatter!"
+
+cd yourlhub-api &&
+mvn fmt:format &&
+mvn checkstyle:checkstyle
+
+echo "Finish Java Format!"
+
+for FILE in `git diff --staged --name-only`; do
+  if [ -e $FILE ]; then
+    git add $FILE
+  fi
+done
